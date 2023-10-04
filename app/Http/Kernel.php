@@ -64,5 +64,19 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'userAccess' => \App\Http\Middleware\UsersAccessControlMiddleware::class,
     ];
+
+	/**
+	 * The application's middleware aliases.
+	 * 
+	 * Aliases may be used instead of class names to conveniently assign middleware to routes and groups.
+	 * 
+	 * @param array<string, class-string|string> $middlewareAliases The application's middleware aliases.
+	 * @return self
+	 */
+	public function setMiddlewareAliases($middlewareAliases): self {
+		$this->middlewareAliases = $middlewareAliases;
+		return $this;
+	}
 }
